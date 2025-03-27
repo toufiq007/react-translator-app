@@ -1,4 +1,5 @@
 import { Volume2, Copy, ArrowLeftRight } from "lucide-react";
+import countries from "../data/data";
 
 const Translate = () => {
   return (
@@ -22,10 +23,7 @@ const Translate = () => {
           boxShadow: "0 10px 20px rgba(0,0,0,0.01)",
         }}
       >
-        <div
-          className="text-inputx"
-          style={{ display: "flex", height: "100%" }}
-        >
+        <div className="text-inputx" style={{ display: "flex", height: "100%" }}>
           <textarea
             spellCheck="false"
             placeholder="enter text"
@@ -64,9 +62,11 @@ const Translate = () => {
           <Volume2 size="20px" />
           <Copy size="20px" />
           <select>
-            <option>limon</option>
-            <option>limon</option>
-            <option>limon</option>
+            {Object.entries(countries).map(([code, name]) => (
+              <option key={code} value={code}>
+                {name}
+              </option>
+            ))}
           </select>
         </div>
         <div>
@@ -76,9 +76,11 @@ const Translate = () => {
           <Volume2 size="20px" />
           <Copy size="20px" />
           <select>
-            <option>limon</option>
-            <option>limon</option>
-            <option>limon</option>
+            {Object.entries(countries).map(([code, name]) => (
+              <option key={code} value={code}>
+                {name}
+              </option>
+            ))}
           </select>
         </div>
       </div>
