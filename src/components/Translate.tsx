@@ -42,6 +42,15 @@ const Translate: React.FC = () => {
     setTimeout(() => setCopied(null), 2000);
   };
 
+  // handle speak features
+  const handleTextToSpeak = (text: string, lang: string) => {
+    if (!text.trim()) return;
+    speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = lang;
+    speechSynthesis.speak(utterance);
+  };
+
   return (
     <div
       className="containerx"
@@ -104,16 +113,18 @@ const Translate: React.FC = () => {
         style={{ border: "1px solid #ccc", padding: "20px" }}
       >
         <div className="flex items-center gap-[20px]">
-          <Volume2 size="20px" />
+          <button onClick={() => handleTextToSpeak(inputText, fromLang)}>
+            <Volume2 size="15px" />
+          </button>
           <button
             onClick={() => handleTextCopy(inputText, "input")}
             title="copy text"
             className="cursor-pointer"
           >
             {copied === "input" ? (
-              <Check size="20px" color="green" />
+              <Check size="15px" color="green" />
             ) : (
-              <Copy size="20px" />
+              <Copy size="15px" />
             )}
           </button>
           <select
@@ -137,16 +148,19 @@ const Translate: React.FC = () => {
             }}
           />
         </div>
+
         <div className="flex items-center gap-[20px]">
-          <Volume2 size="20px" />
+          <button onClick={() => handleTextToSpeak(translatedText, toLang)}>
+            <Volume2 size="15px" />
+          </button>
           <button
             onClick={() => handleTextCopy(translatedText, "output")}
             title="copy text"
           >
             {copied === "output" ? (
-              <Check size="20px" color="green" />
+              <Check size="15px" color="green" />
             ) : (
-              <Copy size="20px" />
+              <Copy size="15px" />
             )}
           </button>
           <select value={toLang} onChange={(e) => setToLang(e.target.value)}>
