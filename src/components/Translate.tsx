@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Volume2, Copy, ArrowLeftRight, Loader2 } from "lucide-react";
+import { Volume2, Copy, ArrowLeftRight, Loader2, Check } from "lucide-react";
 import countries from "../data/data"; // Ensure this is properly typed
 
 // Define country type
@@ -11,6 +11,7 @@ const Translate: React.FC = () => {
   const [fromLang, setFromLang] = useState<string>("en-US"); // Default: English
   const [toLang, setToLang] = useState<string>("bn-BD"); // Default: Bangla
   const [loading, setLoading] = useState<boolean>(false); // Loading state
+  const [copied, setCopied] = useState<"input" | "output" | null>(null);
 
   // Google Translate API Function
   const handleTranslate = async () => {
@@ -32,6 +33,13 @@ const Translate: React.FC = () => {
     } finally {
       setLoading(false); // Stop loading
     }
+  };
+
+  // handle copy features
+  const handleTextCopy = (text: string, type: "input" | "output") => {
+    navigator.clipboard.writeText(text);
+    setCopied(type);
+    setTimeout(() => setCopied(null), 2000);
   };
 
   return (
@@ -97,7 +105,17 @@ const Translate: React.FC = () => {
       >
         <div className="flex items-center gap-[20px]">
           <Volume2 size="20px" />
-          <Copy size="20px" />
+          <button
+            onClick={() => handleTextCopy(inputText, "input")}
+            title="copy text"
+            className="cursor-pointer"
+          >
+            {copied === "input" ? (
+              <Check size="20px" color="green" />
+            ) : (
+              <Copy size="20px" />
+            )}
+          </button>
           <select
             value={fromLang}
             onChange={(e) => setFromLang(e.target.value)}
@@ -121,7 +139,16 @@ const Translate: React.FC = () => {
         </div>
         <div className="flex items-center gap-[20px]">
           <Volume2 size="20px" />
-          <Copy size="20px" />
+          <button
+            onClick={() => handleTextCopy(translatedText, "output")}
+            title="copy text"
+          >
+            {copied === "output" ? (
+              <Check size="20px" color="green" />
+            ) : (
+              <Copy size="20px" />
+            )}
+          </button>
           <select value={toLang} onChange={(e) => setToLang(e.target.value)}>
             {Object.entries(countries as CountryType).map(([code, name]) => (
               <option key={code} value={code}>
