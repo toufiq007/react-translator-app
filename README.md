@@ -1,54 +1,72 @@
-# React + TypeScript + Vite
+🌍 Language Converter App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A fun and simple Language Converter App built with React, TypeScript, and Tailwind CSS. It translates text, supports text-to-speech, and allows easy language switching.
 
-Currently, two official plugins are available:
+🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+✅ Instant Translation – Uses Google Translate API for real-time translation.✅ Auto Language Switch & Translate – Automatically updates when switching languages.✅ Text-to-Speech (TTS) – Listen to the text in both input and output.✅ Copy to Clipboard – Quickly copy any text.✅ One-Click Language Swap – Swap input and output languages instantly.✅ Minimal & Modern UI – Styled with Tailwind CSS for a smooth experience.
 
-## Expanding the ESLint configuration
+🛠️ Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+React (Vite) – Fast development experience.
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+TypeScript – For type safety.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Google Translate API – For real-time translation.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Tailwind CSS – Clean and responsive UI.
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+Lucide React Icons – Beautiful UI elements.
+
+📦 Installation
+
+# Clone the repo
+git clone https://github.com/yourusername/language-converter.git
+cd language-converter
+
+# Install dependencies
+npm install
+
+# Start the app
+npm run dev
+
+Visit http://localhost:5173/ in your browser.
+
+📝 How to Use
+
+Type in the first box.
+
+Select languages from the dropdowns.
+
+Click Translate or swap languages.
+
+Copy text with one click.
+
+Listen to the text with the speaker icon.
+
+🎯 Future Plans
+
+🔹 More language support.
+
+🔹 Offline translation.
+
+🔹 Enhanced UI/animations.
+
+🤝 Contribute
+
+Fork the repo
+
+Create a feature branch (git checkout -b feature-branch)
+
+Commit changes (git commit -m "Added new feature")
+
+Push & PR (git push origin feature-branch)
+
+📜 License
+
+Licensed under the MIT License.
+
+⭐ Enjoyed this project?
+
+Give it a star ⭐ and share with others! 🚀
+
